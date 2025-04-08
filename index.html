@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Sports Platform</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <h1>Hello!</h1>
-</body>
 
+  <div class="hero" >
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Social Platform for <br />Local Sports Clubs</h1>
+      <p>
+        Schedule events, track team performance, share highlights, and interact with fans.
+      </p>
+      <a href="" class="btn">Get Started</a>
+    </div>
+  </div>
+
+  <div class="container" id="auth-box" style="display: none;">
+    <div class="form-container" id="form">
+      <h2 id="form-title">Sign In</h2>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <select id="role" name="role">
+        <option value="admin">Admin</option>
+        <option value="club-manager">Club Manager/Coach</option>
+        <option value="player">Player</option>
+        <option value="fan">Fan/User</option>
+      </select>
+      <button id="submit-btn">Sign In</button>
+      <div class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+  
+      const heroContent = document.querySelector('.hero');
+      heroContent.style.display = 'none';
+  
+      const container = document.getElementById('auth-box');
+      container.style.display = 'block';
+    });
+  </script>
+  
+</body>
 </html>
