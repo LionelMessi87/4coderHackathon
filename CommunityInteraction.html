@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Interaction - Social Sports Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+   <style>
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styling */
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  background-color:#034f84 ;
+  margin-bottom: 30px;
+  animation: fadeIn 2s ease-out;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  color: #FFD700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header p {
+  font-size: 1.4rem;
+  animation: fadeIn 3s ease-out;
+  font-weight: 300;
+  color: #ddd;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Content Styling */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+section {
+  background-color:#92a8d1;
+  border: 1px solid black;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 32%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 3s ease-out;
+}
+
+section:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #FFD700;
+  text-transform: uppercase;
+}
+
+/* Forum and Event items */
+.forum-item, .event-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.forum-item:hover, .event-item:hover {
+  transform: scale(1.05);
+}
+
+.join-btn, .rsvp-btn {
+  background: linear-gradient(45deg, #ff6347, #ffcc00);
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.join-btn:hover, .rsvp-btn:hover {
+  background: linear-gradient(45deg, #ffcc00, #ff6347);
+  transform: scale(1.05);
+}
+
+.join-btn:active, .rsvp-btn:active {
+  transform: scale(0.98);
+}
+
+/* Chat Section */
+.chat-box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.message {
+  margin-bottom: 15px;
+  min-height: 200px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+input[type="text"] {
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: none;
+  font-size: 1.1rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease;
+}
+
+input[type="text"]:focus {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+button {
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Footer Styling */
+.footer {
+  text-align: center;
+  background-color: #333;
+  padding: 15px;
+  color: #ccc;
+  margin-top: 30px;
+  font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  .chat-box {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .header p {
+    font-size: 1.1rem;
+  }
+
+  section {
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+   </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Community Interaction</h1>
+      <p>Join the conversation, engage with your favorite teams, and stay connected!</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="forums">
+      <h2>Discussion Forums</h2>
+      <div class="forum-list">
+        <div class="forum-item">
+          <h3>Football Team Strategy</h3>
+          <button class="join-btn">Join Discussion</button>
+        </div>
+        <div class="forum-item">
+          <h3>Upcoming Basketball Event</h3>
+          <button class="join-btn">Join Discussion</button>
+        </div>
+        <!-- Add more forum items as needed -->
+      </div>
+    </section>
+
+    <section class="chat">
+      <h2>Real-Time Chat</h2>
+      <div class="chat-box">
+        <div class="message" id="messages"></div>
+        <input type="text" id="chatInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
+
+    <section class="events">
+      <h2>Event Announcements & RSVPs</h2>
+      <div class="event-item">
+        <h3>Football Match - May 20</h3>
+        <button class="rsvp-btn">RSVP</button>
+      </div>
+      <!-- Add more event items as needed -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Community Sports Platform. All rights reserved.</p>
+  </footer>
+
+  <script >
+    // Simple chat functionality
+let messages = [];
+
+function sendMessage() {
+  const chatInput = document.getElementById('chatInput');
+  const message = chatInput.value;
+  if (message.trim() !== '') {
+    messages.push(message);
+    displayMessages();
+  }
+  chatInput.value = '';
+}
+
+function displayMessages() {
+  const messageContainer = document.getElementById('messages');
+  messageContainer.innerHTML = messages.map(msg => `<div class="message-text">${msg}</div>`).join('');
+}
+
+  </script>
+</body>
+</html>
