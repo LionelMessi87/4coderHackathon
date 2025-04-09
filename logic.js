@@ -13,9 +13,8 @@ let hpage = document.querySelector(".homepage");
 
     btn2.addEventListener("click", ()=>
     {
-      const fcontainer = document.querySelector(".container");
-      fcontainer.style.display = 'none';
-      hpage.style.display = 'block';
+      window.location.href = 'home.html';
     })
+
 
    
