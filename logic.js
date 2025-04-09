@@ -1,4 +1,6 @@
 const btn = document.querySelector('.btn');
+const btn2 =  document.querySelector("#submit-btn")
+let hpage = document.querySelector(".homepage");
     btn.addEventListener('click', function (e) {
       e.preventDefault();
   
@@ -8,3 +10,12 @@ const btn = document.querySelector('.btn');
       const container = document.getElementById('auth-box');
       container.style.display = 'block';
     });
+
+    btn2.addEventListener("click", ()=>
+    {
+      const fcontainer = document.querySelector(".container");
+      fcontainer.style.display = 'none';
+      hpage.style.display = 'block';
+    })
+
+   
