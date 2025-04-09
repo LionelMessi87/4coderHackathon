@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1585241936938-5f9d6b8d71f6?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      backdrop-filter: blur(5px);
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem auto;
+      flex-wrap: wrap;
+    }
+
+    select {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .card {
+      height: 30vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      animation: slideUp 1s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+
+    .card p, .card ul {
+      font-size: 1rem;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Track Team Performance</h1>
+  </header>
+
+  <div class="filters">
+    <select id="dateFilter">
+      <option value="week">Week</option>
+      <option value="month">Month</option>
+      <option value="season">Season</option>
+    </select>
+    <select id="playerFilter">
+      <option value="all">All Players</option>
+      <option value="player1">Player 1</option>
+      <option value="player2">Player 2</option>
+    </select>
+    <select id="teamFilter">
+      <option value="all">All Teams</option>
+      <option value="teamA">Team A</option>
+      <option value="teamB">Team B</option>
+    </select>
+  </div>
+
+  <div class="dashboard">
+    <div class="card" id="winLossCard">
+      <h2>Win/Loss Record</h2>
+      <p>Wins: 10 | Losses: 4</p>
+    </div>
+
+    <div class="card" id="playerStatsCard">
+      <h2>Player Stats</h2>
+      <ul>
+        <li>Goals: 20</li>
+        <li>Assists: 12</li>
+        <li>Saves: 5</li>
+      </ul>
+    </div>
+
+    <div class="card" id="rankingCard">
+      <h2>Team Rankings</h2>
+      <ol>
+        <li>Team A</li>
+        <li>Team C</li>
+        <li>Team B</li>
+      </ol>
+    </div>
+
+    <div class="card" id="recentMatchesCard">
+      <h2>Recent Matches</h2>
+      <ul>
+        <li>Team A 3 - 1 Team B</li>
+        <li>Team C 2 - 2 Team A</li>
+        <li>Team B 0 - 1 Team C</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const dateFilter = document.getElementById('dateFilter');
+    const playerFilter = document.getElementById('playerFilter');
+    const teamFilter = document.getElementById('teamFilter');
+
+    const updateDashboard = () => {
+      const date = dateFilter.value;
+      const player = playerFilter.value;
+      const team = teamFilter.value;
+
+      // You can add logic here to fetch and display filtered data
+      console.log(`Filtering data for ${date}, Player: ${player}, Team: ${team}`);
+
+      // Placeholder action: update text content
+      document.getElementById('winLossCard').querySelector('p').textContent = `Wins: ${Math.floor(Math.random()*15)} | Losses: ${Math.floor(Math.random()*5)}`;
+    };
+
+    dateFilter.addEventListener('change', updateDashboard);
+    playerFilter.addEventListener('change', updateDashboard);
+    teamFilter.addEventListener('change', updateDashboard);
+  </script>
+</body>
+</html>

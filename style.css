@@ -8,6 +8,7 @@
     height: 100%;
     font-family: 'Arial', sans-serif;
     background: url('bgimg.jpg') no-repeat center center/cover;
+    
   }
   
   .navbar {
@@ -89,7 +90,7 @@
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    position: relative;
+    position: absolute;
     top: 18vh;
     left: 35vw;
     overflow: hidden;
@@ -165,5 +166,22 @@
   #ads{
     color: azure;
     background-color: black;
+  }
+
+  .nav-item{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+  }
+
+  .nav-item a{
+    text-decoration: none;
+    color: white;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-item a:hover{
+    transform: scale(1.1);
   }
   

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Sports Club</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        .hero {
+            background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
+            height: 90vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px #000;
+        }
+
+        .gallery img {
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+        }
+
+        
+  .nav-item{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    gap: 20px;
+  }
+
+  .nav-item a{
+    text-decoration: none;
+    color: white;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-item a:hover{
+    transform: scale(1.1);
+  }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏅 Local Sports Club</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="nav-item">   
+                <a class="ScheduleEvents" href="Schedule_events.html">Schedule Events</a>
+                <a class="TrackPerformance" href="TrackPerformance.html">Track Performance</a>    
+                <a class="nav-link" href="#">Share Highlights</a>                
+                <a class="nav-link" href="#">Community Interaction</a>                
+                <a class="nav-link" href="#">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero animate_animated animate_fadeIn">
+        <div>
+            <h1 class="animate_animated animate_zoomIn">Welcome to Local Sports Club</h1>
+            <p class="lead animate_animated animatefadeInUp animate_delay-1s">Unleash the athlete in you</p>
+            <a href="#about"
+                class="btn btn-warning btn-lg mt-3 animate_animated animatepulse animate_infinite">Explore</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">About Us</h2>
+            <p class="lead">We are a local community-driven sports club promoting health, fitness, and team spirit
+                through sports and events.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+<!-- Gallery Section -->
+<section id="gallery" class="gallery py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Gallery</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="https://picsum.photos/400/300?random=1" class="img-fluid" alt="Sport 1">
+            </div>
+            <div class="col-md-4">
+                <img src="https://picsum.photos/400/300?random=2" class="img-fluid" alt="Sport 2">
+            </div>
+            <div class="col-md-4">
+                <img src="https://picsum.photos/400/300?random=3" class="img-fluid" alt="Sport 3">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Events Section -->
+<section id="events" class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Upcoming Events</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/250?random=4" class="card-img-top" alt="Event 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Summer Tournament</h5>
+                        <p class="card-text">Join our multi-sport event this summer with exciting prizes!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/250?random=5" class="card-img-top" alt="Event 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Fitness Bootcamp</h5>
+                        <p class="card-text">A week-long fitness program to boost your strength and stamina.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/250?random=6" class="card-img-top" alt="Event 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Annual Sports Meet</h5>
+                        <p class="card-text">Celebrate sportsmanship and achievements in our grand event.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer id="contact" class="text-center">
+        <div class="container">
+            <h5>Contact Us</h5>
+            <p>Email: info@sportsclub.com | Phone: +91 98765 43210</p>
+            <p>Address: Local Stadium Road, YourCity, Country</p>
+            <p>Follow us on:
+                <a href="#" class="text-warning ms-2">Facebook</a> |
+                <a href="#" class="text-warning">Instagram</a> |
+                <a href="#" class="text-warning">Twitter</a>
+            </p>
+            <p>&copy; 2025 Local Sports Club. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

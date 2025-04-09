@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f8f9fa;
+      animation: fadeInBody 1s ease-in;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
+      margin-bottom: 10px;
+      animation: slideInLeft 0.5s ease-in-out;
+    }
+    form, .events-list, .calendar-section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: fadeInCard 0.6s ease-in-out;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    }
+    button {
+      padding: 10px 15px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+    .event-item {
+      border: 1px solid #ddd;
+      border-left: 5px solid #007bff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background-color: #f1f1f1;
+      animation: fadeInItem 0.4s ease-in;
+    }
+    .event-item h4 {
+      margin: 0;
+    }
+    .event-actions button {
+      margin-right: 5px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+    .calendar-day {
+      border: 1px solid #ccc;
+      padding: 20px;
+      min-height: 80px;
+      background: #fff;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .calendar-day:hover {
+      background-color: #e6f0ff;
+    }
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      animation: fadeInCard 0.6s ease-in-out;
+    }
+    @media (max-width: 768px) {
+      .filters {
+        flex-direction: column;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInItem {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create a New Event</h2>
+    <form id="eventForm">
+      <input type="text" id="title" placeholder="Event Title" required>
+      <textarea id="description" placeholder="Description"></textarea>
+      <select id="sportType">
+        <option value="Football">Football</option>
+        <option value="Cricket">Cricket</option>
+        <option value="Basketball">Basketball</option>
+        <option value="Tennis">Tennis</option>
+      </select>
+      <input type="text" id="location" placeholder="Location">
+      <input type="date" id="date" required>
+      <input type="time" id="time" required>
+      <input type="text" id="participants" placeholder="Participants (comma separated)">
+      <select id="visibility">
+        <option value="Public">Public</option>
+        <option value="Private">Private</option>
+      </select>
+      <button type="submit">Submit Event</button>
+    </form>
+
+    <div class="calendar-section">
+      <h2>Event Calendar (Weekly Mock)</h2>
+      <div class="calendar-grid" id="calendar">
+        <div class="calendar-day">Sun</div>
+        <div class="calendar-day">Mon</div>
+        <div class="calendar-day">Tue</div>
+        <div class="calendar-day">Wed</div>
+        <div class="calendar-day">Thu</div>
+        <div class="calendar-day">Fri</div>
+        <div class="calendar-day">Sat</div>
+      </div>
+    </div>
+
+    <div class="events-list">
+      <h2>Upcoming Events</h2>
+      <div class="filters">
+        <select id="filterSport">
+          <option value="All">All Sports</option>
+          <option value="Football">Football</option>
+          <option value="Cricket">Cricket</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Tennis">Tennis</option>
+        </select>
+        <input type="date" id="filterDate">
+      </div>
+      <div id="eventsContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    const eventForm = document.getElementById("eventForm");
+    const eventsContainer = document.getElementById("eventsContainer");
+    const filterSport = document.getElementById("filterSport");
+    const filterDate = document.getElementById("filterDate");
+    let events = [];
+
+    eventForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const newEvent = {
+        title: title.value,
+        description: description.value,
+        sportType: sportType.value,
+        location: location.value,
+        date: date.value,
+        time: time.value,
+        participants: participants.value,
+        visibility: visibility.value,
+      };
+      if (confirm("Are you sure you want to add this event?")) {
+        events.push(newEvent);
+        displayEvents();
+        eventForm.reset();
+      }
+    });
+
+    function displayEvents() {
+      eventsContainer.innerHTML = "";
+      let filteredEvents = events.filter((event) => {
+        return (filterSport.value === "All" || event.sportType === filterSport.value) &&
+               (!filterDate.value || event.date === filterDate.value);
+      });
+
+      filteredEvents.forEach((event, index) => {
+        const eventDiv = document.createElement("div");
+        eventDiv.className = "event-item";
+        eventDiv.innerHTML = `
+          <h4>${event.title}</h4>
+          <p>${event.date} at ${event.time}</p>
+          <p>${event.location}</p>
+          <p>Sport: ${event.sportType} | Visibility: ${event.visibility}</p>
+          <div class="event-actions">
+            <button onclick="alert('Viewing ${event.title}')">View</button>
+            <button onclick="editEvent(${index})">Edit</button>
+            <button onclick="deleteEvent(${index})">Cancel</button>
+          </div>
+        `;
+        eventsContainer.appendChild(eventDiv);
+      });
+    }
+
+    function editEvent(index) {
+      const e = events[index];
+      title.value = e.title;
+      description.value = e.description;
+      sportType.value = e.sportType;
+      location.value = e.location;
+      date.value = e.date;
+      time.value = e.time;
+      participants.value = e.participants;
+      visibility.value = e.visibility;
+      events.splice(index, 1);
+    }
+
+    function deleteEvent(index) {
+      if (confirm("Are you sure you want to cancel this event?")) {
+        events.splice(index, 1);
+        displayEvents();
+      }
+    }
+
+    filterSport.addEventListener("change", displayEvents);
+    filterDate.addEventListener("change", displayEvents);
+  </script>
+</body>
+</html>
