@@ -42,11 +42,11 @@ let hpage = document.querySelector(".homepage");
     
           // Show homepage after login
           if (isLogin) {
-            /*const fcontainer = document.querySelector(".container");
+            const fcontainer = document.querySelector(".container");
             fcontainer.style.display = 'none';
-            hpage.style.display = 'block';*/
+            hpage.style.display = 'block';
 
-            window.location.href = 'home.html';
+            
           }
         } else {
           alert(data.message || "Something went wrong");
