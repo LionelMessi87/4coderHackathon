@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share Highlights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #111827;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.5rem;
+      animation: fadeIn 1s ease-out;
+    }
+    .upload-section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .upload-section input, .upload-section textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .upload-section input:focus, .upload-section textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
+    }
+    .upload-btn {
+      background-image: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .upload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease;
+    }
+    .filters button {
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      border: 1px solid #cbd5e1;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .filters button.active, .filters button:hover {
+      background-image: linear-gradient(to right, #3b82f6, #9333ea);
+      color: white;
+      border-color: transparent;
+    }
+    .highlight-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .highlight-media {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .highlight-tags span {
+      background-color: #e0e7ff;
+      color: #4338ca;
+      font-size: 0.875rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
+    .highlight-footer {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .highlight-footer i {
+      cursor: pointer;
+      color: #6b7280;
+      transition: color 0.3s ease;
+    }
+    .highlight-footer i:hover {
+      color: #3b82f6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+      .filters {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- The body and script remain unchanged -->
+  <div class="container">
+    <h1>Share Highlights</h1>
+    <div class="upload-section">
+      <input type="file" id="mediaInput" accept="image/*,video/*" />
+      <textarea id="captionInput" rows="3" placeholder="Write a caption..."></textarea>
+      <input type="text" id="tagsInput" placeholder="Tag teams, players, events..." />
+      <button class="upload-btn" onclick="uploadHighlight()">Share Highlight</button>
+    </div>
+
+    <div class="filters">
+      <button onclick="filterHighlights('all')" class="active">All</button>
+      <button onclick="filterHighlights('football')">Football</button>
+      <button onclick="filterHighlights('cricket')">Cricket</button>
+      <button onclick="filterHighlights('basketball')">Basketball</button>
+      <button onclick="filterHighlights('mostLiked')">Most Liked</button>
+    </div>
+
+    <div id="highlightsFeed"></div>
+  </div>
+
+  <script>
+    const highlights = [];
+
+    function uploadHighlight() {
+      const mediaInput = document.getElementById('mediaInput');
+      const caption = document.getElementById('captionInput').value;
+      const tags = document.getElementById('tagsInput').value.split(',');
+
+      if (mediaInput.files.length === 0) return alert("Please upload media.");
+
+      const file = mediaInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const newHighlight = {
+          id: Date.now(),
+          media: e.target.result,
+          caption,
+          tags,
+          likes: 0
+        };
+        highlights.unshift(newHighlight);
+        renderHighlights();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderHighlights(filter = 'all') {
+      const feed = document.getElementById('highlightsFeed');
+      feed.innerHTML = '';
+      let filtered = [...highlights];
+      if (filter !== 'all') {
+        if (filter === 'mostLiked') {
+          filtered.sort((a, b) => b.likes - a.likes);
+        } else {
+          filtered = highlights.filter(h => h.tags.includes(filter));
+        }
+      }
+
+      filtered.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'highlight-card';
+        card.innerHTML = `
+          <img src="${h.media}" class="highlight-media" />
+          <p>${h.caption}</p>
+          <div class="highlight-tags">${h.tags.map(t => `<span>${t}</span>`).join('')}</div>
+          <div class="highlight-footer">
+            <i class="fas fa-heart" onclick="likeHighlight(${h.id})"> ${h.likes}</i>
+            <i class="fas fa-comment"></i>
+          </div>
+        `;
+        feed.appendChild(card);
+      });
+    }
+
+    function likeHighlight(id) {
+      const highlight = highlights.find(h => h.id === id);
+      if (highlight) {
+        highlight.likes++;
+        renderHighlights();
+      }
+    }
+
+    function filterHighlights(type) {
+      document.querySelectorAll('.filters button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderHighlights(type);
+    }
+  </script>
+</body>
+</html>
